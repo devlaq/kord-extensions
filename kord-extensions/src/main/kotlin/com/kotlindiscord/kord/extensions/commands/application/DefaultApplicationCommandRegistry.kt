@@ -124,7 +124,7 @@ public open class DefaultApplicationCommandRegistry : ApplicationCommandRegistry
             }
         } catch (e: KtorRequestException) {
             logger.error(e) {
-                "Failed to apply application command permissions - for this reason, all commands with configured" +
+                "Failed to apply application command permissions - for this reason, all commands with configured " +
                     "permissions will be disabled." +
                     if (e.error?.message != null) {
                         "\n        Discord error message: ${e.error?.message}"
@@ -134,7 +134,7 @@ public open class DefaultApplicationCommandRegistry : ApplicationCommandRegistry
             }
         } catch (t: Throwable) {
             logger.error(t) {
-                "Failed to apply application command permissions - for this reason, all commands with configured" +
+                "Failed to apply application command permissions - for this reason, all commands with configured " +
                     "permissions will be disabled."
             }
 

@@ -347,37 +347,39 @@ public abstract class ApplicationCommandRegistry : KoinComponent {
 
     // region: Permissions
 
+    @Suppress("ExpressionBodySyntax")
     protected suspend fun <T : ApplicationCommand<*>> injectPermissions(
         guild: Guild?,
         command: T,
         commandId: Snowflake
     ): T? {
-        try {
-            if (guild != null) {
-                kord.editApplicationCommandPermissions(guild.id, commandId) {
-                    injectRawPermissions(this, command)
-                }
+//        try {
+//            if (guild != null) {
+//                kord.editApplicationCommandPermissions(guild.id, commandId) {
+//                    injectRawPermissions(this, command)
+//                }
+//
+//                logger.trace { "Applied permissions for command: ${command.name} ($command)" }
+//            } else {
+//                logger.warn { "Applying permissions to global application commands is currently not supported." }
+//            }
+//        } catch (e: KtorRequestException) {
+//            logger.error(e) {
+//                "Failed to apply application command permissions. This command will not be registered." +
+//                    if (e.error?.message != null) {
+//                        "\n        Discord error message: ${e.error?.message}"
+//                    } else {
+//                        ""
+//                    }
+//            }
+//        } catch (t: Throwable) {
+//            logger.error(t) {
+//                "Failed to apply application command permissions. This command will not be registered."
+//            }
+//
+//            return null
+//        }
 
-                logger.trace { "Applied permissions for command: ${command.name} ($command)" }
-            } else {
-                logger.warn { "Applying permissions to global application commands is currently not supported." }
-            }
-        } catch (e: KtorRequestException) {
-            logger.error(e) {
-                "Failed to apply application command permissions. This command will not be registered." +
-                    if (e.error?.message != null) {
-                        "\n        Discord error message: ${e.error?.message}"
-                    } else {
-                        ""
-                    }
-            }
-        } catch (t: Throwable) {
-            logger.error(t) {
-                "Failed to apply application command permissions. This command will not be registered."
-            }
-
-            return null
-        }
         return command
     }
 

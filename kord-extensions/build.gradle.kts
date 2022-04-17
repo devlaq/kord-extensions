@@ -43,7 +43,6 @@ dependencies {
     testImplementation(libs.logback)
 
     ksp(project(":annotation-processor"))
-    kspTest(project(":annotation-processor"))
 }
 
 val compileKotlin: KotlinCompile by tasks
